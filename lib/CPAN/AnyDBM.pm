@@ -27,7 +27,7 @@ sub new {
     my $keep_source_where;
     # for testing under Darwin, must load CPAN::MyConfig contained
     # in PERL5LIB, as File::HomeDir doesn't use this
-    if ($ENV{CPAN_UNQLITE_TESTING}) {
+    if ($ENV{CPAN_ANYDBM_TESTING}) {
       eval {require CPAN::MyConfig;};
     }
     eval {require CPAN; CPAN::HandleConfig->load;};
@@ -210,14 +210,14 @@ this defaults to 200.
 =head1 CPAN.pm support
 
 As of CPAN.pm version ??, there is experimental support
-within CPAN.pm for using CPAN::AnyDBM similar to use_sqlite 
+within CPAN.pm for using CPAN::AnyDBM similar to use_cpandbm 
 to obtain information on packages, modules, and authors. One goal
 of this is to reduce the memory footprint of the CPAN.pm
 shell, as this information is no longer all preloaded into
 memory. This can be enabled through
 
    perl -MCPAN -e shell
-   cpan> o conf use_unqlite 1
+   cpan> o conf use_cpandbm 1
 
 Use
 
@@ -320,11 +320,11 @@ L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=CPAN-AnyDBM>.
 =head1 ENVIRONMENT VARIABLES
 
 Information messages from the indexing procedures are printed
-out to STDOUT if the environment variable CPAN_UNQLITE_DEBUG
+out to STDOUT if the environment variable CPAN_ANYDBM_DEBUG
 is set. This is automatically set within L<CPAN::AnyDBM::Index>.
-If CPAN_UNQLITE_NO_LOG_FILES is set, no log files will be created
+If CPAN_ANYDBM_NO_LOG_FILES is set, no log files will be created
 during the indexing procedures. Log files are deleted automatically
-in 30 days. To override this, set CPAN_UNQLITE_LOG_FILES_CLEANUP.
+in 30 days. To override this, set CPAN_ANYDBM_LOG_FILES_CLEANUP.
 To stop automatic cleanup, set this variable to 0.
 
 =head1 AUTHORS

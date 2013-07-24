@@ -33,32 +33,32 @@ See the pod documentation of the specific modules for details.
 Perhaps the easiest way to set up and maintain the database is through
 the supplied cpandb script. If we assume that there is a CPAN.pm
 client available and configured, the database can be created via
-   cpandb --setup
-which will create the database file cpandb.sql under the
+   cpandbm --setup
+which will create the database file cpan.dbm under the
 "cpan_home" defined in CPAN::Config (this is the same location
 as where CPAN.pm's Metadata is found). Subsequent updates to
 the database can be done through
-   cpandb --update
+   cpandbm --update
 This scenario assumes that updates to the CPAN index files are
 handled by CPAN.pm.
 
-The cpandb script also provides some elementary searches:
-   cpandb --module My::Module
-   cpandb --dist My-Dist
-   cpandb --cpanid ME
+The cpandbm script also provides some elementary searches:
+   cpandbm --module My::Module
+   cpandbm --dist My-Dist
+   cpandbm --cpanid ME
 which will provide some information on, respectively, the
 specified CPAN module, distribution, and CPAN author id.
 The query terms are assumed to match exactly, and are
 case-insensitive.
 
 As of CPAN.pm version ??, there is experimental support 
-within CPAN.pm for using CPAN::AnyDBM similar to use_sqlite 
+within CPAN.pm for using CPAN::AnyDBM similar to use_cpandbm 
 to obtain information on packages, modules, and authors. One goal
 of this is to reduce the memory footprint of the CPAN.pm
 shell, as this information is no longer all preloaded into
 memory. This can be enabled through
    perl -MCPAN -e shell
-   cpan> o conf use_unqlite 1
+   cpan> o conf use_cpandbm 1
 
 This version is considered alpha. Please report bugs
 and feature requests to CPAN's request tracker:

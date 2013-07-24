@@ -203,10 +203,10 @@ A fatal error results if such a directory isn't found.
 Updates to these index files are assumed here to be
 handled by C<CPAN.pm>.
 
-=item * C<--db_name  'cpan-sqlite'>
+=item * C<--db_name  'cpan.dbm'>
 
 This is the name of the database that C<AnyDBM_File>
-will use. If not given, this defaults to C<cpandb-sqlite>.
+will use. If not given, this defaults to C<cpandb-dbm>.
 
 =item * C<--db_dir  '/path/to/db/dir'>
 

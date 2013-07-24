@@ -17,8 +17,8 @@ use File::Basename;
 use File::Path;
 use LWP::Simple qw(getstore is_success);
 
-unless ($ENV{CPAN_UNQLITE_NO_LOG_FILES}) {
-  $ENV{CPAN_UNQLITE_DEBUG} = 1;
+unless ($ENV{CPAN_ANYDBM_NO_LOG_FILES}) {
+  $ENV{CPAN_ANYDBM_DEBUG} = 1;
 }
 
 our ($oldout);
@@ -55,11 +55,11 @@ sub index {
 
     my $log = catfile($self->{'log_dir'}, $log_file);
 
-    unless ($ENV{'CPAN_UNQLITE_NO_LOG_FILES'}) {
+    unless ($ENV{'CPAN_ANYDBM_NO_LOG_FILES'}) {
         $oldout = error_fh($log);
     }
 
-    my $log_cleanup = $ENV{'CPAN_UNQLITE_LOG_FILES_CLEANUP'};
+    my $log_cleanup = $ENV{'CPAN_ANYDBM_LOG_FILES_CLEANUP'};
     $log_cleanup = 30 unless defined $log_cleanup;
     if ($log_cleanup and $log_cleanup =~ /^\d+$/) {
       if (opendir(my $DIR, $self->{'log_dir'})) {
@@ -189,7 +189,7 @@ sub error_fh {
 }
 
 sub DESTROY {
-  unless ($ENV{CPAN_UNQLITE_NO_LOG_FILES}) {
+  unless ($ENV{CPAN_ANYDBM_NO_LOG_FILES}) {
     close STDOUT;
     open(STDOUT, '>&', $oldout);
   }

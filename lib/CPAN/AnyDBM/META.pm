@@ -27,14 +27,14 @@ sub new {
 
 sub set {
   my ($self, $class, $id) = @_;
-  my $sqlite_obj = $self->make_obj(class => $class, id => $id);
-  return $sqlite_obj->set_one();
+  my $dbm_obj = $self->make_obj(class => $class, id => $id);
+  return $dbm_obj->set_one();
 }
 
 sub search {
   my ($self, $class, $regex) = @_;
-  my $sqlite_obj = $self->make_obj(class => $class, regex => $regex);
-  return $sqlite_obj->set_many();
+  my $dbm_obj = $self->make_obj(class => $class, regex => $regex);
+  return $dbm_obj->set_many();
 }
 
 sub make_obj {

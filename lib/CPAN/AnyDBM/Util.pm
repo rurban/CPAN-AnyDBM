@@ -193,7 +193,7 @@ sub chap_desc {
 }
 
 sub print_debug {
-  return unless $ENV{CPAN_UNQLITE_DEBUG};
+  return unless $ENV{CPAN_ANYDBM_DEBUG};
   return print @_;
 }
 

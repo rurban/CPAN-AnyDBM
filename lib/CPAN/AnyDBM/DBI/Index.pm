@@ -113,7 +113,7 @@ sub create_index {
 sub drop_table {
   my $self = shift;
   my $table = $self->{table};
-  my $sql = qq{SELECT name FROM sqlite_master } .
+  my $sql = qq{SELECT name FROM dbm_master } .
     qq{ WHERE type='table' AND name=?};
   my $sth = $dbh->prepare($sql);
   $sth->execute($table);

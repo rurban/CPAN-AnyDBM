@@ -9,7 +9,7 @@ my $goners = join ' ', qw(
     t/dot-cpan/cpandb.db
     t/dot-cpan/FTPstats.yml
     t/dot-cpan/CPAN/MyConfig.pm
-    t/dot-cpan/cpan_unqlite_log.*
+    t/dot-cpan/cpan_dbm_log.*
     t/dot-cpan/sources/authors/01mailrc.txt.gz
     t/dot-cpan/sources/modules/02packages.details.txt.gz
     t/dot-cpan/sources/modules/03modlist.data.gz

@@ -22,7 +22,7 @@ $ENV{PERL5LIB} = join $path_sep,
 $ENV{HOME} = File::Spec->catdir($cwd, qw(t dot-cpan));
 # hack to get tests to pass on Darwin, as File::HomeDir
 # doesn't use HOME or PERL5LIB to specify where CPAN::MyConfig lives
-$ENV{CPAN_UNQLITE_TESTING} = 1;
+$ENV{CPAN_ANYDBM_TESTING} = 1;
 
 unshift @INC, File::Spec->catdir($cwd, qw(t dot-cpan));
 eval { require CPAN::MyConfig;
