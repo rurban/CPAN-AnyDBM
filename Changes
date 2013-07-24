@@ -1,4 +1,4 @@
-Revision history for Perl extension CPAN::UnQLite.
+Revision history for Perl extension CPAN::AnyDBM.
 
 0.01_01 2013-07-22 13:48:44 rurban
-  - initial version, derived from CPAN::SQLite and UnQLite
+  - initial version, derived from CPAN::SQLite and AnyDBM

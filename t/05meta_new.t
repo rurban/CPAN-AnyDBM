@@ -10,7 +10,7 @@ use File::Path;
 use Config;
 use FindBin;
 use CPAN::DistnameInfo;
-use CPAN::UnQLite::Util qw(download);
+use CPAN::AnyDBM::Util qw(download);
 use lib "$FindBin::Bin/lib";
 use TestSQL qw($mods $auths $dists has_hash_data vcmp);
 use TestShell;

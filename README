@@ -1,10 +1,10 @@
-This is the README for CPAN::UnQLite, which is used for setting up,
+This is the README for CPAN::AnyDBM, which is used for setting up,
 maintaining, and searching through a local CPAN database consisting
 of information in the three main CPAN index files:
   $CPAN/modules/03modlist.data.gz
   $CPAN/modules/02packages.details.txt.gz
   $CPAN/authors/01mailrc.txt.gz
-DBD::UnQLite is used as the database engine.
+AnyDBM_File is used as the database engine.
 
 Installation proceeds through the usual
    perl Makefile.PL
@@ -18,16 +18,16 @@ or, if Module::Build is available,
    perl Build install
 
 The package consists of a number of modules:
-   CPAN::UnQLite: the top-level package
-   CPAN::UnQLite::Index: set up and maintain the database
-   CPAN::UnQLite::Info: extract information from the CPAN indices
-   CPAN::UnQLite::META: helper module for CPAN.pm integration
-   CPAN::UnQLite::State: gather information on the state of the database
-   CPAN::UnQLite::Search: methods to search the database
-   CPAN::UnQLite::Populate: populate the database tables
-   CPAN::UnQLite::DBI: DBI information for the database
-   CPAN::UnQLite::DBI::Index: DBI information for indexing the database
-   CPAN::UnQLite::DBI:Search: DBI information for searching the database
+   CPAN::AnyDBM: the top-level package
+   CPAN::AnyDBM::Index: set up and maintain the database
+   CPAN::AnyDBM::Info: extract information from the CPAN indices
+   CPAN::AnyDBM::META: helper module for CPAN.pm integration
+   CPAN::AnyDBM::State: gather information on the state of the database
+   CPAN::AnyDBM::Search: methods to search the database
+   CPAN::AnyDBM::Populate: populate the database tables
+   CPAN::AnyDBM::DBI: DBI information for the database
+   CPAN::AnyDBM::DBI::Index: DBI information for indexing the database
+   CPAN::AnyDBM::DBI:Search: DBI information for searching the database
 See the pod documentation of the specific modules for details.
 
 Perhaps the easiest way to set up and maintain the database is through
@@ -52,7 +52,7 @@ The query terms are assumed to match exactly, and are
 case-insensitive.
 
 As of CPAN.pm version ??, there is experimental support 
-within CPAN.pm for using CPAN::UnQLite similar to use_sqlite 
+within CPAN.pm for using CPAN::AnyDBM similar to use_sqlite 
 to obtain information on packages, modules, and authors. One goal
 of this is to reduce the memory footprint of the CPAN.pm
 shell, as this information is no longer all preloaded into
@@ -63,11 +63,11 @@ memory. This can be enabled through
 This version is considered alpha. Please report bugs
 and feature requests to CPAN's request tracker:
 
-  http://rt.cpan.org/NoAuth/Bugs.html?Dist=CPAN-UnQLite
+  http://rt.cpan.org/NoAuth/Bugs.html?Dist=CPAN-AnyDBM
 
 or directly to the author. Development takes place at
 
-  https://github.com/rurban/CPAN-UnQLite
+  https://github.com/rurban/CPAN-AnyDBM
 
 This software is Copyright 2006,2008 by Randy Kobes <r.kobes@uwinnipeg.ca>,
 Copyright 2011-2013 by Serguei Trouchelle <stro@cpan.org>, and 

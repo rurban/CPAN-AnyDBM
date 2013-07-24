@@ -1,9 +1,9 @@
 Gathering information from index files ... CPAN: Time::HiRes loaded ok (v1.9725)
 CPAN: URI::URL loaded ok (v5.04)
 CPAN: YAML loaded ok (v0.84)
-Reading information from /home/rurban/Perl/.cpan-build/CPAN-UnQLite-0.01_01-MLv8Dn/t/cpan/authors/01mailrc.txt.gz
-Reading information from /home/rurban/Perl/.cpan-build/CPAN-UnQLite-0.01_01-MLv8Dn/t/cpan/modules/03modlist.data.gz
-Reading information from /home/rurban/Perl/.cpan-build/CPAN-UnQLite-0.01_01-MLv8Dn/t/cpan/modules/02packages.details.txt.gz
+Reading information from /home/rurban/Perl/.cpan-build/CPAN-AnyDBM-0.01_01-MLv8Dn/t/cpan/authors/01mailrc.txt.gz
+Reading information from /home/rurban/Perl/.cpan-build/CPAN-AnyDBM-0.01_01-MLv8Dn/t/cpan/modules/03modlist.data.gz
+Reading information from /home/rurban/Perl/.cpan-build/CPAN-AnyDBM-0.01_01-MLv8Dn/t/cpan/modules/02packages.details.txt.gz
 Done.
 Populating database tables ... Inserting author LDS
 Inserting author GAAS

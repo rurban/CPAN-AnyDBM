@@ -8,7 +8,7 @@ use CPAN::DistnameInfo;
 use FindBin;
 use lib "$FindBin::Bin/lib";
 use TestSQL qw($mods $auths $dists has_hash_data);
-use CPAN::UnQLite::Info;
+use CPAN::AnyDBM::Info;
 
 plan tests => 2929;
 
@@ -21,9 +21,9 @@ my $db_dir = $cwd;
 unlink($db_name) if (-e $db_name);
 
 ok (-d $CPAN);
-use CPAN::UnQLite::Info;
-my $info = CPAN::UnQLite::Info->new(CPAN => $CPAN, db_dir => $db_dir);
-isa_ok($info, 'CPAN::UnQLite::Info');
+use CPAN::AnyDBM::Info;
+my $info = CPAN::AnyDBM::Info->new(CPAN => $CPAN, db_dir => $db_dir);
+isa_ok($info, 'CPAN::AnyDBM::Info');
 
 $info->fetch_info();
 my $info_dists = $info->{dists};
@@ -82,25 +82,25 @@ ok(not defined $info->{dists}->{ZZZ});
 
 my @tables = qw(dists mods auths info);
 my $index;
-my $package = 'CPAN::UnQLite::Index';
+my $package = 'CPAN::AnyDBM::Index';
 foreach my $table(@tables) {
   my $class = $package . '::' . $table;
   my $this = {info => $info->{$table}};
   $index->{$table} = bless $this, $class;
 }
 
-use CPAN::UnQLite::DBI qw($tables);
-my $cdbi = CPAN::UnQLite::DBI::Index->new(CPAN => $CPAN,
+use CPAN::AnyDBM::DBI qw($tables);
+my $cdbi = CPAN::AnyDBM::DBI::Index->new(CPAN => $CPAN,
                                          db_name => $db_name,
                                          db_dir => $db_dir);
-isa_ok($cdbi, 'CPAN::UnQLite::DBI::Index');
+isa_ok($cdbi, 'CPAN::AnyDBM::DBI::Index');
 
-use CPAN::UnQLite::Populate;
-my $pop = CPAN::UnQLite::Populate->new(db_name => $db_name,
+use CPAN::AnyDBM::Populate;
+my $pop = CPAN::AnyDBM::Populate->new(db_name => $db_name,
                                       db_dir => $db_dir,
                                       setup => 1,
                                       CPAN => $CPAN,
                                       index => $index);
-isa_ok($pop, 'CPAN::UnQLite::Populate');
+isa_ok($pop, 'CPAN::AnyDBM::Populate');
 $pop->populate();
 ok(1);

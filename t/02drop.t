@@ -1,15 +1,15 @@
 use strict;
 use warnings;
 use Test::More;
-use UnQLite;
+use AnyDBM;
 BEGIN {plan tests => 7};
 
 my $db_name = 't/dot-cpan/cpandb.db';
 
-my $dbh = UnQLite->open($db_name, UnQLite::OPEN_READWRITE|UnQLite::OPEN_CREATE)
+my $dbh = AnyDBM->open($db_name, AnyDBM::OPEN_READWRITE|AnyDBM::OPEN_CREATE)
   or die "Cannot connect to $db_name";
 ok($dbh);
-isa_ok($dbh, 'UnQLite');
+isa_ok($dbh, 'AnyDBM');
 my @tables = qw(mods auths chaps dists info);
 for my $table(@tables) {
   if ($dbh->kv_fetch($table)) {

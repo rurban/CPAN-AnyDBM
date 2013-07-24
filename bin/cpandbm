@@ -4,8 +4,8 @@
 
 use strict;
 use warnings;
-use CPAN::UnQLite;
-use CPAN::UnQLite::Util qw(%chaps);
+use CPAN::AnyDBM;
+use CPAN::AnyDBM::Util qw(%chaps);
 use Getopt::Long;
 my ($CPAN, $setup, $help, $reindex, $index, $query,
     $db_name, $db_dir, $module, $dist, $cpanid, $update);
@@ -27,7 +27,7 @@ $index = ($update or $reindex or $setup);
 if ($help or not $rc or not ($index or $query)) {
     print <<"END";
 
-Setup, maintain, and search the CPAN::UnQLite database
+Setup, maintain, and search the CPAN::AnyDBM database
 Usage:
    $^X $0 --setup
    $^X $0 --update
@@ -47,7 +47,7 @@ if (defined $setup and defined $reindex) {
 }
 
 if ($index) {
-  my $obj = CPAN::UnQLite->new(CPAN => $CPAN,
+  my $obj = CPAN::AnyDBM->new(CPAN => $CPAN,
                               setup => $setup,
                               db_name => $db_name,
                               db_dir => $db_dir,
@@ -58,7 +58,7 @@ if ($index) {
 else {
 
   my $max_results = 100;
-  my $obj = CPAN::UnQLite->new(CPAN => $CPAN,
+  my $obj = CPAN::AnyDBM->new(CPAN => $CPAN,
                               db_name => $db_name,
                               db_dir => $db_dir,
                               max_results => $max_results);
@@ -166,13 +166,13 @@ __END__
 
 =head1 NAME
 
-cpandb - interface to C<CPAN::UnQLite>
+cpandb - interface to C<CPAN::AnyDBM>
 
 =head1 DESCRIPTION
 
 This script is an interface to the routines of
-L<CPAN::UnQLite> for setting up, maintaining and
-searching a C<DBD::UnQLite> database
+L<CPAN::AnyDBM> for setting up, maintaining and
+searching a C<AnyDBM_File> database
 of CPAN. Available options can be grouped into
 three categories.
 
@@ -205,7 +205,7 @@ handled by C<CPAN.pm>.
 
 =item * C<--db_name  'cpan-sqlite'>
 
-This is the name of the database that C<DBD::UnQLite>
+This is the name of the database that C<AnyDBM_File>
 will use. If not given, this defaults to C<cpandb-sqlite>.
 
 =item * C<--db_dir  '/path/to/db/dir'>
@@ -269,7 +269,7 @@ case-insensitive manner.
 
 =head1 SEE ALSO
 
-L<CPAN::UnQLite>.
+L<CPAN::AnyDBM>.
 
 =cut
 

@@ -4,13 +4,13 @@ use strict;
 use warnings;
 use Test::More;
 use Cwd;
-use CPAN::UnQLite::Search;
+use CPAN::AnyDBM::Search;
 use FindBin;
 use File::Spec::Functions;
 use lib "$FindBin::Bin/lib";
 use TestSQL qw($dists $mods $auths vcmp);
-use CPAN::UnQLite::DBI::Search;
-use CPAN::UnQLite::DBI qw($dbh);
+use CPAN::AnyDBM::DBI::Search;
+use CPAN::AnyDBM::DBI qw($dbh);
 
 my $cwd = getcwd;
 my $CPAN = catfile $cwd, 't', 'cpan';
@@ -19,13 +19,13 @@ plan tests => 2668;
 my $db_name = 'cpandb.db';
 my $db_dir = $cwd;
 
-my $cdbi = CPAN::UnQLite::DBI::Search->new(db_name => $db_name,
+my $cdbi = CPAN::AnyDBM::DBI::Search->new(db_name => $db_name,
                                           db_dir => $db_dir);
 
-my $query = CPAN::UnQLite::Search->new(db_name => $db_name,
+my $query = CPAN::AnyDBM::Search->new(db_name => $db_name,
                                       db_dir => $db_dir);
 ok(defined $query);
-isa_ok($query, 'CPAN::UnQLite::Search');
+isa_ok($query, 'CPAN::AnyDBM::Search');
 
 my $results;
 

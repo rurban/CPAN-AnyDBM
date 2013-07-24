@@ -1,9 +1,9 @@
 This package requires the following Perl modules:
+  AnyDBM_File
   File::Spec
   Archive::Tar
   IO::Zlib
   CPAN::DistnameInfo
-  UnQLite
   File::HomeDir
 
 Installation follows the standard

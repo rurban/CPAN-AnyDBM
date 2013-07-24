@@ -12,7 +12,7 @@ license: unknown
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: CPAN-UnQLite
+name: CPAN-AnyDBM
 no_index:
   directory:
     - t
@@ -22,7 +22,7 @@ requires:
   CPAN::DistnameInfo: 0.09
   CPAN::Index: 1.93
   Compress::Zlib: 0
-  UnQLite: 0.02
+  AnyDBM_File: 1.00
   File::HomeDir: 0
   File::Spec: 0
   IO::Zlib: 0

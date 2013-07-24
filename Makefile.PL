@@ -16,8 +16,8 @@ my $goners = join ' ', qw(
 );
 
 my %opts = (
-    'NAME'          => 'CPAN::UnQLite',
-    'VERSION_FROM'  => 'lib/CPAN/UnQLite.pm',
+    'NAME'          => 'CPAN::AnyDBM',
+    'VERSION_FROM'  => 'lib/CPAN/AnyDBM.pm',
     'EXE_FILES'     => \@exe_files,
     'PL_FILES'      => {},
     'dist'          => {
@@ -34,13 +34,13 @@ $eu_version =~ s/_//msgx;
 
 if ($eu_version >= 5.43) {
     %opts = (%opts, 
-        'ABSTRACT_FROM' => 'lib/CPAN/UnQLite.pm',
+        'ABSTRACT_FROM' => 'lib/CPAN/AnyDBM.pm',
         'AUTHOR'        => 'Reini Urban <rurban@cpan.org>',
     );
 }
 
 my $prereqs = {
-    'UnQLite'               => 0.03,
+    'AnyDBM_File'           => 1.00,
     'File::Spec'            => 0,
     'Archive::Tar'          => 1.54,
     'IO::Zlib'              => 0,
