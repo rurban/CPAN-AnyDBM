@@ -1,4 +1,4 @@
-bin/cpandb
+bin/cpandbm
 INSTALL
 lib/CPAN/AnyDBM.pm
 lib/CPAN/AnyDBM/DBI.pm

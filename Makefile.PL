@@ -3,10 +3,9 @@ use warnings;
 
 use ExtUtils::MakeMaker;
 
-my @exe_files = map {"bin/$_"} qw(cpandb);
 my $goners = join ' ', qw(
-    cpandb.db
-    t/dot-cpan/cpandb.db
+    cpandb.dbm
+    t/dot-cpan/cpandb.dbm
     t/dot-cpan/FTPstats.yml
     t/dot-cpan/CPAN/MyConfig.pm
     t/dot-cpan/cpan_dbm_log.*
@@ -18,7 +17,7 @@ my $goners = join ' ', qw(
 my %opts = (
     'NAME'          => 'CPAN::AnyDBM',
     'VERSION_FROM'  => 'lib/CPAN/AnyDBM.pm',
-    'EXE_FILES'     => \@exe_files,
+    'EXE_FILES'     => ['bin/cpandbm'],
     'PL_FILES'      => {},
     'dist'          => {
         'SUFFIX'        => 'gz',
@@ -27,16 +26,27 @@ my %opts = (
     'clean'         => {
         'FILES'          => $goners
     },
+    'SIGN'          => 1,
 );
 
 my $eu_version = $ExtUtils::MakeMaker::VERSION;
 $eu_version =~ s/_//msgx;
 
-if ($eu_version >= 5.43) {
+if ($eu_version gt '5.43') {
     %opts = (%opts, 
         'ABSTRACT_FROM' => 'lib/CPAN/AnyDBM.pm',
         'AUTHOR'        => 'Reini Urban <rurban@cpan.org>',
     );
+    if ($eu_version gt '6.46') {
+      %opts = (%opts, 
+               'META_MERGE'  =>  {
+                 resources =>  {
+                   repository  => 'http://github.com/rurban/CPAN-AnyDBM',
+                   license     => 'http://dev.perl.org/licenses/',
+                 },
+               }
+        );
+    }
 }
 
 my $prereqs = {

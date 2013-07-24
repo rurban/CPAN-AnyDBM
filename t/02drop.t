@@ -1,19 +1,20 @@
 use strict;
 use warnings;
 use Test::More;
-use AnyDBM;
+use AnyDBM_File;
+use Fcntl;
 BEGIN {plan tests => 7};
 
-my $db_name = 't/dot-cpan/cpandb.db';
-
-my $dbh = AnyDBM->open($db_name, AnyDBM::OPEN_READWRITE|AnyDBM::OPEN_CREATE)
-  or die "Cannot connect to $db_name";
+my $db_name = 't/dot-cpan/cpandb.dbm';
+my %dbh;
+tie %dbh, 'AnyDBM_File', $db_name, O_CREAT|O_RDWR;
+my $dbh = \%dbh;
 ok($dbh);
-isa_ok($dbh, 'AnyDBM');
+isa_ok($dbh, 'AnyDBM_File');
 my @tables = qw(mods auths chaps dists info);
 for my $table(@tables) {
-  if ($dbh->kv_fetch($table)) {
-    $dbh->kv_delete($table);
+  if ($dbh->fetch($table)) {
+    $dbh->delete($table);
     pass("Drop $table");
   } else {
     pass("Skip $table");

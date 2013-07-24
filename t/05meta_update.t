@@ -48,7 +48,7 @@ else {
 is($CPAN::Config->{QAZWSX}, 'PLMOKN');
 
 my $home = $CPAN::Config->{cpan_home};
-my $db = File::Spec->catfile($home, 'cpandb.db');
+my $db = File::Spec->catfile($home, 'cpandb.dbm');
 my $sources = $CPAN::Config->{keep_source_where};
 
 is(-e $db, 1, "$db exists");

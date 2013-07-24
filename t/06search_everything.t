@@ -16,7 +16,7 @@ my $cwd = getcwd;
 my $CPAN = catfile $cwd, 't', 'cpan';
 
 plan tests => 14;
-my $db_name = 'cpandb.db';
+my $db_name = 'cpandb.dbm';
 my $db_dir = $cwd;
 
 my $cdbi = CPAN::AnyDBM::DBI::Search->new(db_name => $db_name,

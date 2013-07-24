@@ -7,7 +7,8 @@ our $VERSION = '0.01_01';
 use English qw/-no_match_vars/;
 
 require File::Spec;
-use AnyDBM;
+use AnyDBM_File;
+use Fcntl;
 
 use parent 'Exporter';
 our ($dbh, $tables, @EXPORT_OK);
@@ -86,7 +87,9 @@ sub new {
   my ($class, %args) = @_;
   my $db_dir = $args{db_dir} || $args{CPAN};
   my $db = File::Spec->catfile($db_dir, $args{db_name});
-  $dbh ||= AnyDBM->open($db, AnyDBM::OPEN_READWRITE|AnyDBM::OPEN_CREATE);
+  my %dbh;
+  tie %dbh, 'AnyDBM_File', $db, O_CREAT|O_RDWR;
+  my $dbh = \%dbh;
   die "Cannot connect to $db" unless $dbh;
 
   my $objs;

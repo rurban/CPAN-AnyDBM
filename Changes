@@ -1,4 +1,4 @@
 Revision history for Perl extension CPAN::AnyDBM.
 
-0.01_01 2013-07-22 13:48:44 rurban
-  - initial version, derived from CPAN::SQLite and AnyDBM
+0.01_01 2013-07-24 15:27:32 rurban
+  - initial version, derived from CPAN::SQLite and CPAN::NoQLite

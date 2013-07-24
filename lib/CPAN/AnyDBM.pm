@@ -13,7 +13,7 @@ require CPAN::AnyDBM::META;
 
 # an array ref of distributions to ignore indexing
 my $ignore = [qw(SpreadSheet-WriteExcel-WebPivot)];
-our $db_name = 'cpandb.db';
+our $db_name = 'cpandb.dbm';
 
 use constant WIN32 => $^O eq 'MSWin32';
 
@@ -150,7 +150,7 @@ This specifies the path to where the database file is
 found. If not given, it defaults to the
 C<cpan_home> directory of C<CPAN.pm>, if present, or to
 the directory in which the script was invoked. The name
-of the database file is C<cpandb.db>.
+of the database file is C<cpandb.dbm>.
 
 =back
 
@@ -246,7 +246,7 @@ information on all available packages into memory; if such
 a query is made, the subsequent memory footprint of CPAN.pm
 with and without CPAN::AnyDBM will be essentially the same.
 
-The database itself, called F<cpandb.db>, will be stored
+The database itself, called F<cpandb.dbm>, will be stored
 in the location specified by C<$CPAN::Config-E<gt>{cpan_home}>.
 When first started, this database will be created, and afterwards,
 it will be updated if the database is older than one day since

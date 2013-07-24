@@ -62,7 +62,7 @@ for (@dirs) {
   next if -d $_;
   mkpath($_) or die qq{Cannot mkpath $_: $!};
 }
-my $db = File::Spec->catfile($home, 'cpandb.db');
+my $db = File::Spec->catfile($home, 'cpandb.dbm');
 unlink($db) if -e $db;
 
 {
